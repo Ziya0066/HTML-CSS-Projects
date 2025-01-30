@@ -1,0 +1,38 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Simple To-Do List</title>  
+    <link rel="stylesheet" href="styles.css">  
+</head>  
+<body>  
+    <div class="container">  
+        <h1 class="todo">MY TO-DO LIST</h1>  
+        <input type="text" id="taskInput" placeholder="Add a new task...">  
+        <button id="addBtn">ADD</button>  
+        <ul id="taskList"></ul>  
+    </div>  
+
+    <script>  
+        const addBtn = document.getElementById('addBtn');  
+        const taskInput = document.getElementById('taskInput');  
+        const taskList = document.getElementById('taskList');  
+
+        addBtn.addEventListener('click', function() {  
+            if (taskInput.value) {  
+                const li = document.createElement('li');  
+                li.textContent = taskInput.value;  
+                taskList.appendChild(li);  
+                taskInput.value = '';  
+            }  
+        });  
+
+        taskList.addEventListener('click', function(e) {  
+            if (e.target.tagName === 'LI') {  
+                e.target.classList.toggle('completed');  
+            }  
+        });  
+    </script>  
+</body>  
+</html>
